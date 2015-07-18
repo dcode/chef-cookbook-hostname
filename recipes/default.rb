@@ -64,7 +64,7 @@ if fqdn
 
   when 'centos', 'redhat', 'amazon', 'scientific'
     if node['platform_version'] >= 7
-      execute "hostnamectl #{hostname}" do
+      execute "hostnamectl set-hostname #{hostname}" do
         only_if { node['hostname'] != hostname }
         notifies :reload, 'ohai[reload_hostname', :immediately
       end
