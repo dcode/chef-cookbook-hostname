@@ -66,7 +66,7 @@ if fqdn
     if node['platform_version'].to_f >= 7
       execute "hostnamectl set-hostname #{hostname}" do
         only_if { node['hostname'] != hostname }
-        notifies :reload, 'ohai[reload_hostname', :immediately
+        notifies :reload, 'ohai[reload_hostname]', :immediately
       end
     else
       service 'network' do
